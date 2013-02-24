@@ -3,11 +3,11 @@ function s = simA(M,x,y,C1,sB)
     % outdegrees
     OX = sum(M(x,:));
     OY = sum(M(y,:));
-    numA = size(M,1);
+    numB = size(M,2);
     
     sumA = 0;
-    for i=1:numA
-        for j = 1:numA
+    for i=1:numB
+        for j = 1:numB
             if M(x,i) == 1 && M(y,j) == 1
                 sumA = sumA + sB(i,j);
             end
