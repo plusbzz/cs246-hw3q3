@@ -1,30 +1,10 @@
 % Initial adjacency matrix (3x5)
 
 M = [0,1,1,0,1;0,1,0,1,0;1,0,0,0,0];
+[sA_M,sB_M] = findSimilarity(M,0.8,0.8,3);
 
-% Initialize similarities
-sA = eye(size(M,1));
-sB = eye(size(M,2));
+K21 = [1;1];
+[sA_K21,sB_K21] = findSimilarity(K21,0.8,0.8,3);
 
-C1 = 0.8;
-C2 = 0.8;
-
-for k = 1:3
-    oldSA = sA;
-    oldSB = sB;
-
-    % update sA
-    for i = 1:size(M,1)
-        for j = i:size(M,1)
-            sA(i,j) = simA(M,i,j,C1,oldSB);
-            sA(j,i) = sA(i,j);
-        end
-    end
-    % update sB
-    for i = 1:size(M,2)
-        for j = i:size(M,2)
-            sB(i,j) = simB(M,i,j,C2,oldSA);
-            sB(j,i) = sB(i,j);
-        end
-    end
-end
+K22 = [1 1; 1 1];
+[sA_K22,sB_K22] = findSimilarity(K22,0.8,0.8,3);
